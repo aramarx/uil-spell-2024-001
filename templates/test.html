@@ -1,0 +1,25 @@
+s<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test: {{ letter }}</title>
+</head>
+<body>
+    <h2>Spell the word: {{ current_word }}</h2>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key={{ api_key }}"></script>
+    #<script src="https://code.responsivevoice.org/responsivevoice.js?key=Ytp4Wvua"></script>
+    <p>Current Score: {{ scoring_board[letter]['correct'] }} / {{ scoring_board[letter]['total'] }}</p>
+    <form method="POST">
+        <input type="text" name="user_input" required placeholder="Your answer" required autofocus>
+        <input type="hidden" name="correct_word" value="{{ current_word }}">
+        <button type="submit">Submit</button>
+    </form>
+
+    <button onclick="window.location.href='{{ url_for('pronounce_word', word=current_word) }}'">Pronounce Again</button>
+    <button onclick="window.location.href='{{ url_for('get_definition', word=current_word) }}'">Get Definition</button>
+    <button onclick="window.location.href='{{ url_for('get_example_sentence', word=current_word) }}'">Get Example Sentence</button>
+    
+    <button onclick="window.location.href='{{ url_for('select_test') }}'">Quit Test</button>
+</body>
+</html>
